@@ -26,6 +26,17 @@ class MainActivity : ComponentActivity() {
                     )
                 }
             }
+            // Instanciamos la base de datos usando la ruta completa
+            val db = com.google.firebase.firestore.FirebaseFirestore.getInstance()
+
+// Creamos un dato de prueba
+            val datosPrueba = hashMapOf(
+                "mensaje" to "¡Conexión exitosa desde el Asus!",
+                "jugador" to "Samuel"
+            )
+
+// Lo enviamos a Firestore
+            db.collection("sala_test").document("estado").set(datosPrueba)
         }
     }
 }
