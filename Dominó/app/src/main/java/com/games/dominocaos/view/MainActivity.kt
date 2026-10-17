@@ -26,17 +26,12 @@ class MainActivity : ComponentActivity() {
                     )
                 }
             }
-            // Instanciamos la base de datos usando la ruta completa
-            val db = com.google.firebase.firestore.FirebaseFirestore.getInstance()
 
-// Creamos un dato de prueba
-            val datosPrueba = hashMapOf(
-                "mensaje" to "¡Conexión exitosa desde el Asus!",
-                "jugador" to "Samuel"
-            )
+// Creamos la instancia de nuestro "cerebro"
+            val viewModel = com.games.dominocaos.viewmodel.PartidaViewModel()
 
-// Lo enviamos a Firestore
-            db.collection("sala_test").document("estado").set(datosPrueba)
+// Le damos la orden de crear las fichas, repartirlas y subir la mesa a la nube
+            viewModel.iniciarPartida()
         }
     }
 }
