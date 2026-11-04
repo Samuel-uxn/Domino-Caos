@@ -6,11 +6,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.games.dominocaos.domain.OpcionesTurno
 import com.games.dominocaos.model.Lado
-
-/** Botones de acción del turno: colocar a la izquierda/derecha, robar, pasar y abandonar. */
+@Preview
 @Composable
 fun Controles(
     opciones: OpcionesTurno,
