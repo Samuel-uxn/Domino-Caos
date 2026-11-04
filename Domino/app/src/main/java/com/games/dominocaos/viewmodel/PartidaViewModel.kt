@@ -15,10 +15,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-/**
- * Puente entre la interfaz y el juego. Expone el estado de la sala como StateFlow y traduce
- * los toques del usuario en acciones del [MotorPartida], que se aplican sobre Firestore.
- */
 class PartidaViewModel : ViewModel() {
 
     private val repositorio = PartidaRepository()

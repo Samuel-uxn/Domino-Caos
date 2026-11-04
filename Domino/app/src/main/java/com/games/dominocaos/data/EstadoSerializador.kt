@@ -8,11 +8,6 @@ import com.games.dominocaos.model.JugadorEstado
 import com.games.dominocaos.model.MotivoFin
 import com.games.dominocaos.model.Poder
 
-/**
- * Convierte el estado de la partida a un mapa simple (lo que guarda Firestore) y de vuelta.
- * Solo usa tipos básicos (String, Int, Boolean, List, Map), así que se puede probar sin Android.
- * Firestore devuelve los enteros como Long, por eso se leen siempre como Number.
- */
 object EstadoSerializador {
 
     fun aMapa(e: EstadoPartida): Map<String, Any?> = mapOf(

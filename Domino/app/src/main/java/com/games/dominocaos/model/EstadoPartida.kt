@@ -19,13 +19,6 @@ data class JugadorEstado(
     val puntosEnMano: Int get() = fichas.sumOf { it.izquierdo + it.derecho }
 }
 
-/**
- * Estado completo e inmutable de una partida. El motor siempre devuelve una copia nueva,
- * así que se puede exponer tal cual en un StateFlow.
- *
- * tablero: de izquierda a derecha. Extremo izquierdo = tablero.first().izquierdo,
- * extremo derecho = tablero.last().derecho.
- */
 data class EstadoPartida(
     val idSala: String,
     val fase: FasePartida = FasePartida.ESPERANDO,

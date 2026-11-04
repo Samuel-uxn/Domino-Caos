@@ -1,9 +1,5 @@
 package com.games.dominocaos.model
 
-/**
- * Eventos aleatorios. Si duracionTurnos > 0 el evento es temporal (modifica las reglas
- * durante esa cantidad de turnos); si es 0 se aplica de inmediato y ya.
- */
 enum class EventoCaos(val titulo: String, val descripcion: String, val duracionTurnos: Int) {
     // Afectan el puntaje (temporales)
     PUNTOS_DOBLES("Puntos dobles", "Las fichas colocadas valen el doble.", 2),

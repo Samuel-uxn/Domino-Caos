@@ -6,11 +6,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Transaction
 
-/**
- * Único punto de contacto con Firestore. Cada sala es un documento en la colección "salas"
- * cuyo id es el código de la sala. Toda modificación se hace dentro de una transacción para
- * que dos jugadores no se pisen entre sí.
- */
 class PartidaRepository(
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 ) {
@@ -18,10 +13,8 @@ class PartidaRepository(
         const val COLECCION = "salas"
         const val CODIGO_OCUPADO = "CODIGO_OCUPADO"
     }
-
     private fun documento(codigo: String) = db.collection(COLECCION).document(codigo)
 
-    /** Crea la sala; devuelve Error(CODIGO_OCUPADO) si ya existe una con ese código. */
     fun crearSala(estado: EstadoPartida, onResult: (Resultado) -> Unit) {
         val doc = documento(estado.idSala)
         db.runTransaction(Transaction.Function<Resultado> { tx ->
@@ -34,11 +27,6 @@ class PartidaRepository(
         }).addOnSuccessListener { onResult(it) }
             .addOnFailureListener { onResult(Resultado.Error(it.message ?: "Error de conexión")) }
     }
-
-    /**
-     * Lee la sala, le aplica [operacion] (normalmente una llamada al motor) y, si fue exitosa,
-     * guarda el nuevo estado. Todo en una sola transacción.
-     */
     fun ejecutar(codigo: String, operacion: (EstadoPartida) -> Resultado, onResult: (Resultado) -> Unit) {
         val doc = documento(codigo)
         db.runTransaction(Transaction.Function<Resultado> { tx ->
@@ -55,8 +43,6 @@ class PartidaRepository(
         }).addOnSuccessListener { onResult(it) }
             .addOnFailureListener { onResult(Resultado.Error(it.message ?: "Error de conexión")) }
     }
-
-    /** Escucha los cambios de la sala en tiempo real. Hay que llamar a remove() al salir. */
     fun escuchar(
         codigo: String,
         onEstado: (EstadoPartida?) -> Unit,
