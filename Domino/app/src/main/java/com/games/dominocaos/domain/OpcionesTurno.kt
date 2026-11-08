@@ -7,10 +7,7 @@ import com.games.dominocaos.model.FasePartida
 import com.games.dominocaos.model.Lado
 import com.games.dominocaos.model.Poder
 
-/**
- * Qué puede hacer un jugador en este momento. La interfaz lo usa para habilitar o
- * deshabilitar botones sin duplicar las reglas del juego.
- */
+
 data class OpcionesTurno(
     val esMiTurno: Boolean,
     val lados: List<Lado>,

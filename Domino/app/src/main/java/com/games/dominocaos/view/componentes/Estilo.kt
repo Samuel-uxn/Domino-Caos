@@ -24,7 +24,6 @@ object Gameboy {
     val Ficha = Color(0xFFE8F0C8)
 }
 
-/** Texto monoespaciado con los colores del juego. */
 @Composable
 fun TextoGameboy(
     texto: String,
@@ -41,8 +40,6 @@ fun TextoGameboy(
         color = Gameboy.Oscuro
     )
 }
-
-/** Botón rectangular reutilizable. [marcado] lo pinta oscuro (por ejemplo, un poder armado). */
 @Composable
 fun BotonGameboy(
     texto: String,

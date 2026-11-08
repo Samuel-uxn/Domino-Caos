@@ -10,7 +10,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.games.dominocaos.domain.OpcionesTurno
 import com.games.dominocaos.model.Lado
-@Preview
 @Composable
 fun Controles(
     opciones: OpcionesTurno,
